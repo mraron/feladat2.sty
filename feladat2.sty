@@ -1,0 +1,94 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{feladat2}
+\ProvidesPackage{olymp}
+
+\addtolength{\hoffset}{-15mm}
+\addtolength{\voffset}{-15mm}
+\addtolength{\textwidth}{30mm}
+\addtolength{\textheight}{30mm}
+\setlength{\headheight}{10mm}
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{2mm}
+\linespread{1}
+
+\usepackage{hyperref} 
+\usepackage{verbatim}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\footrulewidth}{0.4pt}% default is 0pt
+\usepackage{xspace,colortbl}
+\usepackage[utf8]{inputenc}
+\usepackage[magyar]{babel}
+\usepackage{amsmath}
+\RequirePackage{amssymb}
+\usepackage{multicol}
+\usepackage[pdftex]{graphicx}
+\usepackage{t1enc}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{datetime}
+
+\newenvironment{problem}[5]{
+
+\newcommand{\InputFileName}{\texttt{#2} }
+\newcommand{\OutputFileName}{\texttt{#3} }
+\section*{#1}
+\thispagestyle{fancy}
+
+\newcommand{\Limits}{
+\subsection*{Korlátok}
+\par Időlimit: #4
+\par Memórialimit: #5
+}
+}{
+\Limits
+\pagebreak
+}
+
+\newcommand{\contest}[4]{
+\lhead{#1}
+\rhead{#2}
+\lfoot{#3}
+\rfoot{#4}
+}
+
+\newenvironment{example}{
+   \newcommand{\exmp}[2]{
+     \begin{tabular}{@{}l l}
+        \textit{Bemenet}&
+        \textit{Kimenet}\\
+        \ttfamily\begin{minipage}[t]{0.5\textwidth}##1\end{minipage}&
+        \ttfamily\begin{minipage}[t]{0.5\textwidth}##2\end{minipage}\\
+      \end{tabular}
+    }
+
+    \newcommand{\exmpfile}[2]{
+       \exmp{
+          \verbatiminput{##1}
+       }{
+          \verbatiminput{##2}
+       }
+    }
+}{}
+
+\newcommand{\Input}{\subsection*{Bemenet}}
+\newcommand{\InputFile}{\subsection*{Bemenet}}
+\newcommand{\Output}{\subsection*{Kimenet}}
+\newcommand{\OutputFile}{\subsection*{Kimenet}}
+\newcommand{\Example}{\subsection*{Példa}}
+\newcommand{\Examples}{\subsection*{Példák}}
+\newcommand{\Scoring}{\subsection*{Pontozás}}
+\newcommand{\Explanation}{\subsection*{Magyarázat}}
+\newcommand{\Explanations}{\subsection*{Magyarázat}}
+
+\usepackage{xcolor}
+\usepackage{sectsty}
+\definecolor{myRed}{rgb}{0.5,0,0}
+\sectionfont{\color{myRed}\centering}
+\subsectionfont{\color{myRed}}
+
+\usepackage{titlesec}
+\titlespacing*{\section}
+{0pt}{5px}{10px}
+\titlespacing*{\subsection}
+{0pt}{5px}{0px}
